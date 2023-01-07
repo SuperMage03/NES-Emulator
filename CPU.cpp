@@ -40,11 +40,11 @@ void CPU::setBus(BUS *b) {
 }
 
 uint8_t CPU::read(uint16_t address) {
-    return bus->read(address);
+    return bus->cpuRead(address);
 }
 
 void CPU::write(uint16_t address, uint8_t data) {
-    return bus->write(address, data);
+    return bus->cpuWrite(address, data);
 }
 
 void CPU::clock() {
