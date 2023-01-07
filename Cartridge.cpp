@@ -18,7 +18,7 @@ Cartridge::Cartridge(const std::string &iNESPath) {
     }
 
     else {
-        ifs.seekg(512, std::ios_base::cur)
+        ifs.seekg(512, std::ios_base::cur);
     }
 }
 
