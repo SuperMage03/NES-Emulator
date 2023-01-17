@@ -16,12 +16,25 @@ Cartridge::Cartridge(const std::string &iNESPath) {
         trainer = new uint8_t[512];
         ifs.read((char*)trainer, sizeof(uint8_t) * 512);
     }
-
     else {
         ifs.seekg(512, std::ios_base::cur);
     }
+
+    // iNES2 implementation, maybe later
+//    if (header.isNES2) {
+//
+//    }
+//    else {
+//
+//    }
+    prgROM = new uint8_t[16384 * header.prgROMChunk];
+    chrROM = new uint8_t[8192  * header.chrROMChunk];
+
+
 }
 
 Cartridge::~Cartridge() {
     delete[] trainer;
+    delete[] prgROM;
+    delete[] chrROM;
 }

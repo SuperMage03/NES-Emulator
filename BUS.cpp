@@ -78,6 +78,38 @@ void BUS::cpuWrite(uint16_t address, uint8_t data) {
     else {
 
     }
+}
+
+
+void BUS::ppuRead(uint16_t address) {
+    // NES RAM
+    if (0x0000 <= address && address <= 0x1FFF) {
+        Cartridge
+    }
+
+        // NES PPU Registers
+    else if (0x2000 <= address && address <= 0x3FFF) {
+        // 0x2000 to 0x2007 are mirrored onto the range 0x2008 to 0x3FFF
+        return ppu.readRegister(0x2000 + ((address - 0x2000) % 8));
+    }
+
+        // NES APU and I/O Registers
+    else if (0x4000 <= address && address <= 0x4017) {
+        return 0;
+    }
+
+        // APU and I/O functionality that is normally disabled.
+    else if (0x4018 <= address && address <= 0x401F) {
+        return 0;
+    }
+
+        // Cartridge space: PRG ROM, PRG RAM, and mapper registers
+    else {
+        return 0;
+    }
+}
+
+void BUS::ppuWrite(uint16_t address, uint8_t data) {
 
 }
 

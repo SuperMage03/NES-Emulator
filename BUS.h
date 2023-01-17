@@ -9,12 +9,14 @@
 #include "CPU.h"
 #include "APU.h"
 #include "PPU.h"
+#include "Cartridge.h"
 
 class BUS {
 private:
     CPU cpu{};
     APU apu{};
     PPU ppu{};
+    Cartridge cart;
 
     MEMORY *ram{};
     MEMORY *vram{};
